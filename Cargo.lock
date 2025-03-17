@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "pubsub"
+name = "edge-app"
 version = "0.1.0"
