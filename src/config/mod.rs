@@ -1,7 +1,7 @@
 // Declare the module files
-mod manager;
+pub mod manager;
 pub mod config;
-mod source;
+pub mod source;
 pub mod sources; 
 
 // Re-export necessary structs and traits for external use

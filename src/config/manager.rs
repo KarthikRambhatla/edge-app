@@ -38,4 +38,9 @@ impl ConfigSourceManager {
         }
         println!("For now nothing happens")
     }
+
+    pub async fn run(&mut self) {
+        self.load_all();
+        self.watch_all();
+    }
 }

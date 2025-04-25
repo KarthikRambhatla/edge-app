@@ -17,6 +17,8 @@ Once we know the protocol, we will create a data source manager or an adapter th
 #### Core Module
 Abstracted away from protocol we follow, how we want to handle request, we want to poll? or we want to have a call back structure, for CnC use case and publish response
 
+Since this is not delivering messages to subsccriptions that dynamically changes, observer, delegates might not fit or performant. May be we should go with channels (crossbeam? may be normal mpsc for now). so we can somehow reuse the same connection for unique sinks, and send when received. Backpressure handling (when the actual sink is not fast enough to consume, this program channel gets filled up)
+
 
 #### Data Sink Module
 To whom we publish response, those specific implementation, may be like nats sink, or to cloud hub, it could be anything
