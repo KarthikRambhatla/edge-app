@@ -1,8 +1,9 @@
 // use std::net::UdpSocket;
 // use std::str;
 mod data_source;
-mod config;
-pub mod data_sink; // This tells Rust to look for either config.rs or config/mod.rs
+mod config; // This tells Rust to look for either config.rs or config/mod.rs
+pub mod data_sink; 
+mod core;
 use crate::config::Config; //This brings Config type
 use config::{config::SinkConfig, manager::ConfigSourceManager, source::ConfigSource, sources::in_mem::InMemory};
 
@@ -40,7 +41,7 @@ fn main() {
     let config_source: Box<dyn ConfigSource> = Box::new(InMemory {
         configs: vec![wiz_bulb_config],
     });
-    let mut config_manager = ConfigSourceManager::new(vec![config_source]);
+    let config_manager = ConfigSourceManager::new(vec![config_source]);
 
     println!("Hello, world!");
 }

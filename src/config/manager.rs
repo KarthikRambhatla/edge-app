@@ -16,12 +16,12 @@ impl ConfigSourceManager {
             notifier: String::new()
         }
     }
-    pub fn add_source(&mut self, source: Box<dyn ConfigSource>) {
+    fn add_source(&mut self, source: Box<dyn ConfigSource>) {
         self.sources.push(source);
         println!("Source added");
     }
 
-    pub fn load_all(&mut self) {
+    fn load_all(&mut self) {
         self.current_config.clear();
         for source in &self.sources {
             for config in source.load_config() {
@@ -32,7 +32,7 @@ impl ConfigSourceManager {
         println!("Configs loaded");
     }
 
-    pub fn watch_all(&self) {
+    fn watch_all(&self) {
         for source in &self.sources {
             source.watch_config();
         }
